@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사이트 등록 요청 및 배너 문의</title>
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+body { margin: 0; background-color: #1f1f1f; font-family: 'Arial', sans-serif; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center; padding: 20px; } .thank-you-box { background: #2a2a2a; border: 1px solid #444; border-radius: 12px; padding: 40px; max-width: 500px; box-shadow: 0 0 10px rgba(255, 255, 255, 0.05); } h1 { color: #ff4d4f; font-size: 28px; margin-bottom: 10px; } p { font-size: 16px; color: #ccc; margin-bottom: 30px; } a { display: inline-block; background: #ff4d4f; color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; transition: background 0.2s ease; } a:hover { background: #ff6b6b; }
+
+.contact-form-section { background: #2a2a2a; padding: 30px; border-radius: 12px; color: white; max-width: 600px; margin: 40px auto; box-shadow: 0 0 10px rgba(255, 255, 255, 0.05); } .contact-form-section h2 { margin-bottom: 10px; } .contact-form-section form { display: flex; flex-direction: column; gap: 12px;} .contact-form-section input, .contact-form-section select, .contact-form-section textarea { padding: 12px; background: #2a2a2a; color: white; border: 1px solid #444; border-radius: 6px; font-size: 14px; width: 100%; } .contact-form-section button { padding: 12px; background-color: #ff4d4f; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background-color 0.2s; margin-top:5px } .contact-form-section button:hover { background-color: #ff6b6b; } .form-status { margin-top: 10px; font-size: 14px; color: #ccc;} .category {width: 100%}   
+  </style>
+</head>
+<body>
+<form action="https://formspree.io/f/mrbkegkz" method="POST" class="contact-form-section">
+  <input type="text" name="name" placeholder="이름 또는 닉네임" required />
+  <input type="url" name="website" placeholder="웹사이트 주소 (https:// 포함)" required />
+  
+  <select name="category" required>
+    <option value="">카테고리 선택</option>
+    <option value="성인 사이트">성인 사이트</option>
+    <option value="웹툰망가">웹툰망가</option>
+    <option value="토렌트 영화">토렌트 영화</option>
+    <option value="드라마TV 사이트">드라마TV 사이트</option>
+  </select>
+
+  <textarea name="message" placeholder="추가 설명 또는 요청사항 (선택사항)"></textarea>
+  <textarea disabled name="message" placeholder="🎯 배너 문의는 텔레그램 @csghie29 로 DM 주세요 — 멋진 결과 함께 만들어봐요!" style="resize: none"></textarea>
+
+  <!-- Optional: honeypot spam protection -->
+  <input type="text" name="_gotcha" style="display:none">
+
+  <!-- Redirect after submit -->
+  <input type="hidden" name="_redirect" value="/thank-you.html" />
+
+  <button type="submit">제출하기</button>
+</form>
+
+
+
+<script>
+  function submitWebsite(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const url = document.getElementById('url').value;
+    const category = document.getElementById('category').value;
+    const message = document.getElementById('message').value;
+
+    // In production, replace this with an email API or backend handler
+    document.getElementById('form-status').textContent =
+      `✅ 감사합니다, ${name}님! 요청이 성공적으로 접수되었습니다.`;
+
+    // Optionally clear form
+    document.getElementById('submitForm').reset();
+  }
+</script>
+
+
+</body>
+</html>
